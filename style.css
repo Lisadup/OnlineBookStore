@@ -785,13 +785,26 @@ section{
    color:var(--dodger-blue);
 }
 
+.search-form form{
+   max-width: 1200px;
+   margin:0 auto;
+   display: flex;
+   gap:1rem;
+}
 
+.search-form form .btn{
+   margin-top: 0;
+}
 
-
-
-
-
- 
+.search-form form .box{
+   width: 100%;
+   padding:1.2rem 1.4rem;
+   border:var(--border);
+   font-size: 2rem;
+   color:var(--black);
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+}
 
 .footer{
    background-color: var(--light-bg);
@@ -843,8 +856,6 @@ section{
 .footer .credit span{
    color:var(--turqoise);
 }
-
-
 
 
 /* media queries  */
