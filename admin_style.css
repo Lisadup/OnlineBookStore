@@ -225,7 +225,7 @@ section {
 }
 
 .header .flex .account-box p span {
-   color: var(--black);
+   color: var(--dodger-blue);
 }
 
 .header .flex .account-box .delete-btn {
