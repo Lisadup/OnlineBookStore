@@ -42,7 +42,7 @@ if(isset($_POST['send'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -57,7 +57,7 @@ if(isset($_POST['send'])){
 <section class="contact">
 
    <form action="" method="post">
-      <h3>Say Something</h3>
+      <h3>Leave A Message</h3>
       <input type="text" name="name" required placeholder="Full Name:" class="box">
       <input type="email" name="email" required placeholder="Email:" class="box">
       <input type="number" name="number" required placeholder="Number" class="box">
