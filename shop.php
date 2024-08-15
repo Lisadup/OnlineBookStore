@@ -24,7 +24,7 @@ if (isset($_POST['add_to_cart'])) {
     if (mysqli_num_rows($check_cart_numbers) > 0) {
         $_SESSION['message'] = 'Already Added To Cart';
     } else {
-        mysqli_query($conn, "INSERT INTO `cart`(user_id, name, author, genre, price, quantity, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+        mysqli_query($conn, "INSERT INTO `cart`(user_id, name, author, genre, price, quantity, image) VALUES('$user_id', '$product_name', '$product_author', '$product_genre', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
         $_SESSION['message']= 'Book Added To Cart';
     }
 }
