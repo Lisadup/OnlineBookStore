@@ -13,7 +13,7 @@ if(!isset($admin_id)){
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
    mysqli_query($conn, "DELETE FROM `message` WHERE id = '$delete_id'") or die('query failed');
-   header('location:admin_contacts.php');
+   header('location:admin_contact.php');
 }
 
 ?>
@@ -54,7 +54,7 @@ if(isset($_GET['delete'])){
       <p> Number : <span><?php echo $fetch_message['number']; ?></span> </p>
       <p> Email : <span><?php echo $fetch_message['email']; ?></span> </p>
       <p> Message : <span><?php echo $fetch_message['message']; ?></span> </p>
-      <a href="admin_contacts.php?delete=<?php echo $fetch_message['id']; ?>" onclick="return confirm('delete this message?');" class="delete-btn">Delete Message</a>
+      <a href="admin_contact.php?delete=<?php echo $fetch_message['id']; ?>" onclick="return confirm('delete this message?');" class="delete-btn">Delete Message</a>
    </div>
    <?php
       };
