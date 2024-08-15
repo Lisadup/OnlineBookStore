@@ -13,7 +13,7 @@ if(!isset($user_id)){
 if(isset($_POST['update_cart'])){
    $cart_id = $_POST['cart_id'];
    $cart_quantity = $_POST['cart_quantity'];
-   mysqli_query($conn, "UPDATE `cart` SET quantity = '$cart_quantity' WHERE id = '$cart_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `cart` SET quantity = '$cart_quantity' WHERE id = '$cart_id'") or die('Query Failed');
    $_SESSION['message'] = 'Cart Quantity Updated!';
 }
 
@@ -69,6 +69,8 @@ if(isset($_GET['delete_all'])){
          <a href="cart.php?delete=<?php echo $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('Delete This From Cart?');"></a>
          <img src="uploaded_img/<?php echo $fetch_cart['image']; ?>" alt="">
          <div class="name"><?php echo $fetch_cart['name']; ?></div>
+         <div class="name"><?php echo $fetch_cart['author']; ?></div>
+         <div class="name"><?php echo $fetch_cart['genre']; ?></div>
          <div class="price">R<?php echo $fetch_cart['price']; ?>.00</div>
          <form action="" method="post">
             <input type="hidden" name="cart_id" value="<?php echo $fetch_cart['id']; ?>">
