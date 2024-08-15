@@ -26,15 +26,15 @@ if (isset($_POST['update_profile'])) {
         if ($update_pass != $old_pass) {
             $_SESSION['message'] = 'Old Password Does Not Match';
         } elseif ($new_pass != $confirm_pass) {
-            $_SESSION['message']= 'Confirm Password Does Not Match!';
+            $_SESSION['message'] = 'Confirm Password Does Not Match!';
         } else {
             mysqli_query($conn, "UPDATE `users` SET password = '$confirm_pass' WHERE id = '$user_id'") or die('query failed');
             $_SESSION['message'] = 'Password Updated Successfully!';
         }
+    } else {
+        $_SESSION['message'] = 'Profile updated successfully!';
+        header('location:update_profile.php');
     }
-
-    $_SESSION['message'] = 'Profile updated successfully!';
-    header('location:update_profile.php');
 }
 
 ?>
