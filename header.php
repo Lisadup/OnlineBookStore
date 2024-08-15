@@ -34,6 +34,7 @@ if(isset($_SESSION['message'])){
             <a href="shop.php">Shop</a>
             <a href="contact.php">Contact</a>
             <a href="orders.php">Orders</a>
+            <a href="update_profile.php">Profile</a>
          </nav>
 
          <div class="icons">
