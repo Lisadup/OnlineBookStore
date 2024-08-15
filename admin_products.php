@@ -12,6 +12,8 @@ if (!isset($admin_id)) {
 
 if (isset($_POST['add_product'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $author = mysqli_real_escape_string($conn, $_POST['author']);
+    $genre = mysqli_real_escape_string($conn, $_POST['genre']);
     $price = $_POST['price'];
     $image = $_FILES['image']['name'];
     $image_size = $_FILES['image']['size'];
@@ -23,7 +25,7 @@ if (isset($_POST['add_product'])) {
     if (mysqli_num_rows($select_product_name) > 0) {
         $_SESSION['message'] = 'Product Name Already Added';
     } else {
-        $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image) VALUES('$name','$price','$image')") or die('Query Failed');
+        $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, author, genre, price, image) VALUES('$name', '$author', '$genre','$price','$image')") or die('Query Failed');
 
         if ($add_product_query) {
             if ($image_size > 2000000) {
@@ -50,10 +52,13 @@ if(isset($_GET['delete'])){
 if(isset($_POST['update_product'])){
     $update_p_id = $_POST['update_p_id'];
     $update_name = $_POST['update_name'];
+    $update_author = $_POST['update_author'];
+    $update_genre = $_POST['update_genre'];
     $update_price = $_POST['update_price'];
 
-    mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price' WHERE id=$update_p_id") or die('Query Failed');
+    mysqli_query($conn, "UPDATE `products` SET name = '$update_name', author = '$update_author', genre = '$update_genre', price = '$update_price' WHERE id=$update_p_id") or die('Query Failed');
 
+    //Handle image update
     $update_image = $_FILES['update_image']['name'];
     $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
     $update_image_size = $_FILES['update_image']['size'];
@@ -101,6 +106,8 @@ if(isset($_POST['update_product'])){
         <form action="" method="post" enctype="multipart/form-data">
             <h3>Add Product</h3>
             <input type="text" name="name" class="box" placeholder="Book's Name:" required>
+            <input type="text"  name="author" class="box" placeholder="Author's Name:" required>
+            <input type="text"  name="genre" class="box" placeholder="Book's Genre:" required>
             <input type="number" min="0" name="price" class="box" placeholder="Book's Price:" required>
             <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
             <input type="submit" name="add_product" value="Add Product" class="btn">
@@ -108,7 +115,7 @@ if(isset($_POST['update_product'])){
     </section>
     <!-- Product CRUD system ends -->
 
-    <!-- Show Products -->
+    <!-- Display Products -->
     <section class="show-products">
         <div class="box-container">
             <?php
@@ -119,6 +126,8 @@ if(isset($_POST['update_product'])){
                     <div class="box">
                         <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
                         <div class="name"><?php echo $fetch_products['name']; ?></div>
+                        <div class="author"><?php echo $fetch_products['author']; ?></div>
+                        <div class="genre"><?php echo $fetch_products['genre']; ?></div>
                         <div class="price">R<?php echo $fetch_products['price']; ?></div>
                         <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">Update</a>
                         <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn" onclick="return confirm('Delete This Product?');">Delete</a>
@@ -145,6 +154,8 @@ if(isset($_POST['update_product'])){
             <input type="hidden" name="update_old_image" value="<?php echo $fetch_update['image'];?>">
             <img src="uploaded_img/<?php echo $fetch_update['image'];?>" alt="">
             <input type="text" name="update_name" value="<?php echo $fetch_update['name'];?>" class="box" required placeholder="Book's Name:">
+            <input type="text" name="update_author" value="<?php echo $fetch_update['author'];?>" class="box" required placeholder="Author's Name:">
+            <input type="text" name="update_genre" value="<?php echo $fetch_update['genre'];?>" class="box" required placeholder="Book's Genre:">
             <input type="number" name="update_price" value="<?php echo $fetch_update['price'];?>" min="0" class="box" required placeholder="Book's Price:">
             <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png" >
             <input type="submit" value="update" class="btn" name="update_product">
