@@ -10,6 +10,7 @@ if (!isset($user_id)) {
     header('location:login.php');
 }
 
+
 if (isset($_POST['add_to_cart'])) {
 
     $product_name = $_POST['product_name'];
@@ -81,39 +82,6 @@ if (isset($_POST['add_to_cart'])) {
                         <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
                         <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
                         <input type="submit" value="add to cart" name="add_to_cart" class="btn">
-
-
-                        <!--Reviews for books-->
-                        <div class="reviews-section">
-                            <h4>Reviews</h4>
-                            <?php
-                            $review_query = mysqli_query($conn, "SELECT r.*, u.name as user_name FROM `reviews` r JOIN `users` u ON r.user_id = u.id WHERE r.product_id = '{$fetch_products['id']}'") or die('Query Failed');
-                            if(mysqli_num_rows($review_query) > 0){
-                                while($review = mysqli_fetch_assoc($review_query)){
-                                    echo "<div class='review'>";
-                                    echo "<p>Rating: " . str_repeat("★", $review['rating']) . str_repeat("☆", 5 - $review['rating']) . "</p>";
-                                    echo "<p>{$review['review_text']}</p>";
-                                    echo "<p>By: {$review['user_name']}</p>";
-                                    echo "</div>";
-                                }
-                            } else {
-                                echo "<p>No reviews yet.</p>";
-                            }
-                            ?>
-                            <form action="add_review.php" method="post" class="review-form">
-                                <input type="hidden" name="product_id" value="<?php echo $fetch_products['id']; ?>">
-                                <select name="rating" required>
-                                    <option value="">Select Rating</option>
-                                    <option value="1">1 Star</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="5">5 Stars</option>
-                                </select>
-                                <textarea name="review_text" placeholder="Write your review here" required></textarea>
-                                <input type="submit" value="Submit Review" class="btn">
-                            </form>
-                        </div>
                     </form>
             <?php
                 }
@@ -124,13 +92,6 @@ if (isset($_POST['add_to_cart'])) {
         </div>
 
     </section>
-
-
-
-
-
-
-
 
     <?php include 'footer.php'; ?>
 
