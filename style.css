@@ -354,7 +354,7 @@ section{
 /*Home.php*/
 .home{
    min-height: 70vh;
-   background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(https://insidesources.com/wp-content/uploads/2014/06/bigstock-A-pile-of-books-with-library-o-54563726.jpg) no-repeat;
+   background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(images/home.jpg) no-repeat;
    background-size: cover;
    background-position: center;
    display: flex;
