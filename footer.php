@@ -36,6 +36,6 @@
 
    </div>
 
-   <p class="credit"> &copy; Copyright @ <?php echo date('Y'); ?> by <span>Lisa du Plessis</span> </p>
+   <p class="credit"> &copy; Copyright @ 2024 by <span>Lisa du Plessis</span> </p>
 
 </section>
