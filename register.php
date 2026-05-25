@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
       } else {
          mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type) VALUES('$name', '$email', '$cpass', '$user_type')") or die('query failed');
          $_SESSION['message'] = 'Signed up successfully!';
-         header('location:login.php');
+         header('location:index.php');
          exit();
       }
    }
@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
             <option value="admin">admin</option>
          </select>
          <input type="submit" name="submit" value="Sign Up" class="btn">
-         <p>Already Have an Account? <a href="login.php">Login Here</a></p>
+         <p>Already Have an Account? <a href="index.php">Login Here</a></p>
       </form>
 
    </div>

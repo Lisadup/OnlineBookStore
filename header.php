@@ -20,7 +20,7 @@ if(isset($_SESSION['message'])){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <p> New <a href="login.php">Login</a> | <a href="register.php">Register</a> </p>
+         <p> New <a href="index.php">Login</a> | <a href="register.php">Register</a> </p>
       </div>
    </div>
 
